@@ -1,5 +1,9 @@
 n_folds = 5
+skew_transform_treshold = 5
+outlier_drop_treshold = 2
 drop_strategy = 'first'
+model_to_use = 'latest.model'
+variance_threshold = 0.01
 
 DROP_FEATURES = ['Id', 'Utilities']
 FEATURE_TO_FILLVALUE = {'Functional': 'Typ'}
@@ -9,7 +13,28 @@ COLS_WITH_TYPOS = {
 ZERO_FEATURES = ['GarageYrBlt', 'GarageArea', 'GarageCars', 'BsmtFinSF1', 'BsmtFinSF2', 'BsmtUnfSF','TotalBsmtSF', 'BsmtFullBath', 'BsmtHalfBath', 'MasVnrArea']
 NONE_FEATURES = ['PoolQC', 'MiscFeature', 'Alley', 'Fence', 'FireplaceQu', 'GarageType', 'GarageFinish', 'GarageQual', 'GarageCond', 'BsmtQual', 'BsmtCond', 'BsmtExposure', 'BsmtFinType1', 'BsmtFinType2', 'MasVnrType', 'MSSubClass']
 MODE_FEATURES = ['MSZoning', 'Electrical', 'KitchenQual', 'Exterior1st', 'Exterior2nd', 'SaleType']
-FEATURE_TO_TYPE = {'MSSubClass': str}
+FEATURE_TO_TYPE = {'MSSubClass': str, 'YrSold': str, 'MoSold': str}
+
+CLIP_FEATURES = {
+    'GrLivArea': (0, 3500),
+    'TotalBsmtSF': (0, 3500),
+    '1stFlrSF': (0, 3500),
+    'GarageArea': (0, 1200),
+    'YearBuilt': (1950, 2020),
+    'YearRemodAdd': (1950, 2020),
+    'BsmtFinSF1': (0, 2500),
+    'OpenPorchSF': (0, 400),
+    'LotArea': (0, 70000),
+    'TotRmsAbvGrd': (0, 11),
+    'HalfBath': (0, 1),
+    'BedroomAbvGr': (0, 4),
+    'GarageYrBlt': (1950, 2020),
+    'Fireplaces': (0, 2),
+    'MasVnrArea': (0, 1000),
+    'EnclosedPorch': (0, 400),
+    'ScreenPorch': (0, 300)
+}
+
 ORDINAL_FEATURES = {
     'FireplaceQu': ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],
     'BsmtQual': ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],

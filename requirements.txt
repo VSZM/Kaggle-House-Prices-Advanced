@@ -1,0 +1,8 @@
+pandas==1.1.1
+mlxtend==0.17.1
+joblib==0.17.0
+lightgbm==2.3.0
+pactools==0.3
+numpy==1.17.2
+scipy==1.4.1
+scikit_learn==0.23.2

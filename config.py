@@ -1,4 +1,9 @@
-n_folds = 5
+import numpy as np
+
+log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+n_folds = 4
+random_seed = 42
 skew_transform_treshold = 5
 outlier_drop_treshold = 2
 drop_strategy = 'first'
@@ -85,4 +90,40 @@ CATEGORICAL_FEATURES = {
     'MiscFeature': ['Elev', 'Gar2', 'Othr', 'Shed', 'TenC', 'None'],
     'SaleType': ['WD', 'CWD', 'VWD', 'New', 'COD', 'Con', 'ConLw', 'ConLI', 'ConLD', 'Oth'], 
     'SaleCondition': ['Normal', 'Abnorml', 'AdjLand', 'Alloca', 'Family', 'Partial']
+}
+
+"""
+    'model__num_leaves': range(5, 21),
+    'model__max_depth': range(3, 9),
+    'model__learning_rate': [0.1],#np.linspace(0.05, 0.2, 10),
+    'model__n_estimators': range(30, 151, 10),
+    'model__min_child_weight': [0.4]#np.linspace(0.2, 0.6, 4)
+"""
+lgb_grid_params = {
+    'model__num_leaves': [5],
+    'model__max_depth': [3],
+    'model__learning_rate': [0.1],
+    'model__n_estimators': [140],
+    'model__min_child_weight': [0.4]
+}
+
+lasso_grid_params = {
+    'model__alpha': [0.0005],#np.linspace(0.0001, 0.01, 25),
+    'model__max_iter': [100000]
+}
+
+svr_grid_params = {
+    'model__cache_size': [5000], 
+    'model__C':  np.linspace(0.1, 0.5, 15),
+    'model__epsilon': np.linspace(0.01, 0.1, 15),
+    'model__coef0': np.linspace(0.5, 1, 15),
+    'model__kernel': ['poly']
+}
+
+rf_grid_params = {
+    'model__n_estimators': range(50, 251, 25),
+    'model__max_depth': range(5, 13),
+    'model__min_samples_split': range(2, 9, 2),
+    'model__min_samples_leaf': range(3, 7),
+    'model__max_features': range(10, 51, 10)
 }

@@ -14,7 +14,7 @@ class HousePriceModel:
     def __init__(self):
         if HousePriceModel.__instance != None:
             raise Exception("This class is a singleton!")
-        self._preprocessor = joblib.load('models/preprocessor.pipe')
+        self._preprocessor = joblib.load('models/' + config.pipe_to_use)
         self._model = joblib.load('models/' + config.model_to_use)
         HousePriceModel.__instance = self
 

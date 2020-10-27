@@ -5,7 +5,6 @@ random_seed = 42
 skew_transform_treshold = 5
 outlier_drop_treshold = 2
 drop_strategy = 'first'
-model_to_use = 'stacked.model'
 variance_threshold = 0.01
 
 DROP_FEATURES = ['Id', 'Utilities']

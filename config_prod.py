@@ -1,5 +1,8 @@
 import numpy as np
 
+model_to_use = 'prod_stacked.model'
+pipe_to_use = 'prod_preprocessor.pipe'
+
 lgb_grid_params = {
     'model__num_leaves': range(5, 21),
     'model__max_depth': range(3, 9),

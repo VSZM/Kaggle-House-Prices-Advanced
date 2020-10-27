@@ -125,5 +125,5 @@ logger.info('Stacked model training finished. NRMSE: %f, Saving stacked model. S
 if not os.path.exists('models'):
     os.makedirs('models')
 
-joblib.dump(preprocessing_pipe, 'models/preprocessor.pipe', compress = 1)
-joblib.dump(stack, 'models/stacked.model', compress = 1)
+joblib.dump(preprocessing_pipe, 'models/' + config.pipe_to_use, compress = 1)
+joblib.dump(stack, 'models/' + config.model_to_use, compress = 1)

@@ -207,7 +207,8 @@ class LotFrontageTransformer(SkippableTransformer):
 
     def do_transform(self, X, y = None):
         df = X.copy()
-        lotfrontage_fills = df.apply(axis = 1, func = lambda row: self.neighbourhood_lotfrontage_medians[row['Neighborhood']])
+        lotfrontage_fills = df.apply(axis = 1, func = lambda row: self.neighbourhood_lotfrontage_medians.get(row['Neighborhood']) or 
+                                                                        self.neighbourhood_lotfrontage_medians.values.mean())
         df['LotFrontage'] = df['LotFrontage'].fillna(lotfrontage_fills)
         return df
 

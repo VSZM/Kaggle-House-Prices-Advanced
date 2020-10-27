@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import config
+import os
 
 from sklearn.model_selection import cross_val_score, KFold
 from preprocess import construct_preprocess_pipe, prepare_training_data
@@ -98,6 +99,10 @@ stack = StackingCVRegressor(regressors=[lgb_regressor, lasso_regressor, rf_regre
 stack.fit(X_transformed, y)
 
 logger.info('Stacked model training finished. Saving stacked model. Stacked model params: |%s|', stack.get_params())
+
+
+if not os.path.exists('models'):
+    os.makedirs('models')
 
 joblib.dump(preprocessing_pipe, 'models/preprocessor.pipe', compress = 1)
 joblib.dump(stack, 'models/stacked.model', compress = 1)

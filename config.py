@@ -8,9 +8,10 @@ if env not in list_of_environments:
     raise ValueError(f'Unsupported Environment: |{env}|')
 
 
-import config_common
+from config_common import *
 
 if env == 'prod':
-    import config_prod.py
+    from config_prod import *
 elif env == 'test':
-    import config_test.py
+    from config_test import *
+

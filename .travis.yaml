@@ -1,0 +1,13 @@
+language: python
+python:
+    - "3.6"
+install:
+    - pip install -r requirements.txt
+script:
+    - py.test --cov-report term-missing --cov=maths
+    - py.test --doctest-modules --cov=maths3 --cov-report term-missing
+branches:
+  only:
+    - master
+after_success:
+    - coveralls
